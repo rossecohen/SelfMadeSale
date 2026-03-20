@@ -1,0 +1,1368 @@
+/* ================================================================
+   SELF MADE SALE — styles.css
+   ================================================================ */
+
+
+/* ----------------------------------------------------------------
+   1. CUSTOM PROPERTIES
+   ---------------------------------------------------------------- */
+:root {
+    --color-bg:        #F7F4EF;   /* Warm off-white — page background */
+    --color-text:      #1E1E1E;   /* Near-black — primary text */
+    --color-navy:      #1C2B3A;   /* Slate navy — nav, stats bar, footer */
+    --color-amber:     #C17A26;   /* Muted amber/gold — CTAs, accents */
+    --color-secondary: #6B6B6B;   /* Mid-gray — subheads, captions */
+    --color-rule:      #DDD7CE;   /* Warm gray — borders, dividers */
+    --color-white:     #FFFFFF;   /* White — cards, contrast surfaces */
+
+    --font-serif: 'Lora', Georgia, 'Times New Roman', serif;
+    --font-sans:  'Inter', system-ui, -apple-system, sans-serif;
+
+    --max-width:      1100px;
+    --editorial-max:  900px;
+    --section-gap:    100px;
+    --nav-height:     68px;
+}
+
+
+/* ----------------------------------------------------------------
+   2. RESET & BASE
+   ---------------------------------------------------------------- */
+*, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+    font-size: 18px;
+}
+
+body {
+    background-color: var(--color-bg);
+    color: var(--color-text);
+    font-family: var(--font-sans);
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+ul {
+    list-style: none;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+
+/* ----------------------------------------------------------------
+   3. TYPOGRAPHY
+   ---------------------------------------------------------------- */
+h1, h2, h3 {
+    font-family: var(--font-serif);
+    line-height: 1.2;
+    color: var(--color-text);
+}
+
+h1 {
+    font-size: clamp(52px, 7vw, 80px);
+    font-weight: 700;
+    letter-spacing: -0.02em;
+}
+
+h2 {
+    font-size: clamp(30px, 3.5vw, 40px);
+    font-weight: 700;
+    letter-spacing: -0.01em;
+    margin-bottom: 1.25rem;
+}
+
+h3 {
+    font-size: 24px;
+    font-weight: 600;
+    margin-bottom: 0.75rem;
+}
+
+p {
+    margin-bottom: 1.25rem;
+}
+
+p:last-child {
+    margin-bottom: 0;
+}
+
+
+/* ----------------------------------------------------------------
+   4. LAYOUT UTILITIES
+   ---------------------------------------------------------------- */
+.container {
+    max-width: var(--max-width);
+    margin-left: clamp(24px, 5vw, 80px);
+    margin-right: 0;
+    padding-right: clamp(24px, 5vw, 60px);
+}
+
+.section {
+    padding: var(--section-gap) 0;
+}
+
+.editorial {
+    max-width: var(--editorial-max);
+}
+
+
+/* ----------------------------------------------------------------
+   5. BUTTONS & LINKS
+   ---------------------------------------------------------------- */
+.btn {
+    display: inline-block;
+    font-family: var(--font-sans);
+    font-weight: 600;
+    font-size: 15px;
+    letter-spacing: 0.01em;
+    border-radius: 3px;
+    border: none;
+    cursor: pointer;
+    text-align: center;
+    white-space: nowrap;
+    text-decoration: none;
+    transition: background-color 0.2s ease, opacity 0.2s ease;
+}
+
+.btn-amber {
+    background-color: var(--color-amber);
+    color: var(--color-white);
+    padding: 10px 22px;
+}
+
+.btn-amber:hover {
+    background-color: #A86820;
+    color: var(--color-white);
+}
+
+.btn-lg {
+    font-size: 17px;
+    padding: 15px 34px;
+}
+
+.btn-sm {
+    font-size: 14px;
+    padding: 8px 18px;
+}
+
+.link-arrow {
+    display: inline-block;
+    font-family: var(--font-sans);
+    font-weight: 500;
+    font-size: 15px;
+    color: var(--color-amber);
+    margin-top: 1.5rem;
+    transition: color 0.2s ease;
+}
+
+.link-arrow:hover {
+    color: #A86820;
+}
+
+
+/* ----------------------------------------------------------------
+   6. NAVIGATION
+   ---------------------------------------------------------------- */
+.nav {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background-color: var(--color-navy);
+    height: var(--nav-height);
+    display: flex;
+    align-items: center;
+}
+
+.nav-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.nav-logo {
+    font-family: var(--font-serif);
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--color-bg);
+    letter-spacing: -0.01em;
+    flex-shrink: 0;
+    transition: color 0.2s ease;
+}
+
+.nav-logo:hover {
+    color: var(--color-white);
+}
+
+.nav-links {
+    display: flex;
+    align-items: center;
+    gap: 32px;
+    list-style: none;
+}
+
+.nav-links li a:not(.btn) {
+    font-family: var(--font-sans);
+    font-size: 14px;
+    font-weight: 500;
+    color: rgba(247, 244, 239, 0.8);
+    transition: color 0.2s ease;
+}
+
+.nav-links li a:not(.btn):hover {
+    color: var(--color-white);
+}
+
+/* Hamburger button — hidden on desktop */
+.nav-toggle {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    gap: 5px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 4px;
+}
+
+.nav-toggle span {
+    display: block;
+    width: 22px;
+    height: 2px;
+    background-color: var(--color-bg);
+    transition: transform 0.2s ease, opacity 0.2s ease;
+}
+
+
+/* ----------------------------------------------------------------
+   7. HERO
+   ---------------------------------------------------------------- */
+.hero {
+    position: relative;
+    padding: clamp(80px, 10vw, 140px) 0;
+    overflow: hidden;
+}
+
+/* Warm paper grain texture — CSS only */
+.hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");
+    background-size: 300px 300px;
+    opacity: 0.04;
+    pointer-events: none;
+    z-index: 0;
+}
+
+.hero-inner {
+    position: relative;
+    z-index: 1;
+}
+
+.hero-eyebrow {
+    font-family: var(--font-sans);
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--color-secondary);
+    margin-bottom: 1.25rem;
+}
+
+.hero h1 {
+    margin-bottom: 1.25rem;
+}
+
+.hero-headline-accent {
+    color: var(--color-amber);
+    text-transform: uppercase;
+}
+
+.hero-subhead {
+    font-size: clamp(17px, 2vw, 20px);
+    color: var(--color-secondary);
+    line-height: 1.55;
+    margin-bottom: 2.5rem;
+    font-weight: 400;
+}
+
+.hero-actions {
+    display: flex;
+    align-items: center;
+    gap: 28px;
+    flex-wrap: wrap;
+}
+
+.hero-learn-more {
+    font-family: var(--font-sans);
+    font-size: 15px;
+    font-weight: 500;
+    color: var(--color-secondary);
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+.hero-learn-more:hover {
+    color: var(--color-text);
+}
+
+
+/* ----------------------------------------------------------------
+   8. STATS BAR
+   ---------------------------------------------------------------- */
+.stats-bar {
+    background-color: var(--color-navy);
+    padding: 60px 0;
+}
+
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 32px;
+}
+
+.stat-item + .stat-item {
+    border-left: 2px solid rgba(193, 122, 38, 0.45);
+    padding-left: 32px;
+}
+
+.stat-number {
+    display: block;
+    font-family: var(--font-serif);
+    font-size: clamp(30px, 3.2vw, 44px);
+    font-weight: 700;
+    color: var(--color-white);
+    line-height: 1;
+    margin-bottom: 10px;
+    font-variant-numeric: tabular-nums;
+}
+
+.stat-label {
+    font-family: var(--font-sans);
+    font-size: 12px;
+    font-weight: 400;
+    color: rgba(247, 244, 239, 0.6);
+    line-height: 1.45;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+}
+
+.stat-label .lc {
+    text-transform: lowercase;
+}
+
+
+/* ----------------------------------------------------------------
+   9. WHAT I DO
+   ---------------------------------------------------------------- */
+.section-what {
+    background-color: var(--color-white);
+}
+
+.section-what h2 {
+    margin-bottom: 1.75rem;
+}
+
+.pull-quote {
+    font-family: var(--font-serif);
+    font-size: clamp(22px, 2.8vw, 30px);
+    font-weight: 700;
+    color: var(--color-navy);
+    line-height: 1.35;
+    letter-spacing: -0.01em;
+    border-left: 3px solid var(--color-amber);
+    padding: 0.25rem 0 0.25rem 1.5rem;
+    margin: 2.25rem 0;
+    max-width: 680px;
+}
+
+
+/* Who I Help — 3 situation cards */
+.who-help-cards {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    margin: 2.5rem 0;
+}
+
+.who-help-card {
+    padding: 28px 28px 32px;
+    background-color: var(--color-white);
+    border: 1px solid var(--color-rule);
+    border-top: 3px solid var(--color-amber);
+    border-radius: 0 0 4px 4px;
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.who-help-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 28px rgba(0, 0, 0, 0.09);
+}
+
+.who-help-card h3 {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    font-size: 19px;
+    color: var(--color-navy);
+    margin-bottom: 0.875rem;
+    white-space: nowrap;
+}
+
+.who-help-card-icon {
+    flex-shrink: 0;
+    color: var(--color-amber);
+}
+
+.who-help-card p {
+    font-size: 16px;
+    color: var(--color-secondary);
+    line-height: 1.65;
+    margin-bottom: 0;
+}
+
+
+/* Situations list */
+.situations-list {
+    list-style: none;
+    margin-top: 1.25rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+}
+
+.situation-item {
+    display: flex;
+    gap: 14px;
+    align-items: flex-start;
+    padding: 20px 20px;
+    border-left: 3px solid var(--color-rule);
+    border-radius: 0 4px 4px 0;
+    font-size: 16px;
+    line-height: 1.6;
+    background-color: var(--color-white);
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.06);
+    transition: border-left-color 0.25s ease, background-color 0.25s ease,
+                opacity 0.25s ease, transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.situation-item::before {
+    content: '✓';
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    width: 18px;
+    height: 18px;
+    margin-top: 3px;
+    border: 1.5px solid var(--color-amber);
+    border-radius: 3px;
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--color-amber);
+    font-family: var(--font-sans);
+    transition: background-color 0.25s ease, color 0.25s ease;
+}
+
+/* Dim all siblings when list is being hovered */
+.situations-list:hover .situation-item {
+    opacity: 0.55;
+}
+
+/* Full opacity + highlight on the hovered item */
+.situations-list:hover .situation-item:hover {
+    opacity: 1;
+    border-left-color: var(--color-amber);
+    background-color: rgba(193, 122, 38, 0.04);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.09);
+    transform: translateX(4px);
+}
+
+.situations-list:hover .situation-item:hover::before {
+    background-color: var(--color-amber);
+    color: var(--color-white);
+}
+
+
+/* ----------------------------------------------------------------
+   10. WHO I AM + ABOUT PAGE
+   ---------------------------------------------------------------- */
+
+/* Inner page header */
+.page-header {
+    padding: clamp(60px, 8vw, 100px) 0 clamp(36px, 5vw, 56px);
+    background-color: var(--color-bg);
+    border-bottom: 1px solid var(--color-rule);
+}
+
+.page-header h1 {
+    font-size: clamp(36px, 4.5vw, 54px);
+    margin-bottom: 0.4rem;
+}
+
+.page-header-sub {
+    font-size: 16px;
+    color: var(--color-secondary);
+    margin-bottom: 0;
+}
+
+/* About bio section */
+.section-about {
+    background-color: var(--color-white);
+}
+
+.about-bio p {
+    font-size: 18px;
+    line-height: 1.75;
+    margin-bottom: 1.25rem;
+}
+
+.about-bio p:last-child {
+    margin-bottom: 0;
+}
+
+.bio-pull-quote {
+    font-family: var(--font-serif);
+    font-size: clamp(20px, 2.2vw, 24px);
+    font-weight: 400;
+    font-style: italic;
+    color: var(--color-navy);
+    line-height: 1.5;
+    border-left: 3px solid var(--color-navy);
+    padding: 0.25rem 0 0.25rem 1.5rem;
+    margin: 2.25rem 0;
+}
+
+.bio-rule {
+    border: none;
+    border-top: 1px solid var(--color-rule);
+    margin: 2rem 0 1.25rem;
+}
+
+.bio-credentials {
+    font-size: 14px !important;
+    color: var(--color-secondary) !important;
+    line-height: 1.6;
+}
+
+/* Active nav link */
+[aria-current="page"] {
+    color: var(--color-white) !important;
+}
+
+
+/* ----------------------------------------------------------------
+   NOT A BROKER PAGE
+   ---------------------------------------------------------------- */
+
+/* Tighter section padding for long-form inner pages */
+.section-nab-intro,
+.section-nab-commission,
+.section-nab-model {
+    padding: clamp(48px, 5vw, 64px) 0;
+}
+
+/* Intro section — prose left, contrast panel right */
+.section-nab-intro {
+    background-color: var(--color-white);
+}
+
+.nab-intro-grid {
+    display: grid;
+    grid-template-columns: 1.35fr 1fr;
+    gap: clamp(48px, 6vw, 80px);
+    align-items: start;
+}
+
+.nab-prose p {
+    font-size: 18px;
+    line-height: 1.75;
+    margin-bottom: 1.25rem;
+}
+
+.nab-prose p:last-child {
+    margin-bottom: 0;
+}
+
+/* Contrast panel */
+.contrast-panel {
+    padding-top: 6px;
+}
+
+.contrast-header {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    padding-bottom: 10px;
+    margin-bottom: 4px;
+    border-bottom: 2px solid var(--color-navy);
+}
+
+.contrast-label {
+    font-family: var(--font-sans);
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.09em;
+    text-transform: uppercase;
+}
+
+.contrast-label--broker {
+    color: var(--color-secondary);
+}
+
+.contrast-label--sms {
+    color: var(--color-navy);
+}
+
+.contrast-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    padding: 14px 0;
+    border-bottom: 1px solid var(--color-rule);
+}
+
+.contrast-row:last-child {
+    border-bottom: none;
+}
+
+.contrast-broker {
+    font-family: var(--font-sans);
+    font-size: 14px;
+    color: var(--color-secondary);
+    line-height: 1.5;
+}
+
+.contrast-sms {
+    font-family: var(--font-sans);
+    font-size: 14px;
+    color: var(--color-navy);
+    font-weight: 500;
+    line-height: 1.5;
+}
+
+/* Commission section */
+.section-nab-commission {
+    background-color: var(--color-bg);
+}
+
+.section-nab-commission h2 {
+    margin-bottom: 1.5rem;
+}
+
+.stat-callout {
+    margin-bottom: 2.75rem;
+}
+
+.stat-callout-number {
+    font-family: var(--font-serif);
+    font-size: clamp(52px, 6vw, 72px);
+    font-weight: 700;
+    color: var(--color-navy);
+    line-height: 1;
+    letter-spacing: -0.02em;
+    margin-bottom: 0.4rem;
+}
+
+.stat-callout-label {
+    font-family: var(--font-sans);
+    font-size: 16px;
+    color: var(--color-secondary);
+    line-height: 1.4;
+}
+
+.nab-pull-quote {
+    font-family: var(--font-serif);
+    font-size: clamp(18px, 1.8vw, 24px);
+    font-weight: 600;
+    color: var(--color-navy);
+    line-height: 1.5;
+    border-left: 4px solid var(--color-amber);
+    padding: 0.5rem 0 0.5rem 1.75rem;
+    margin: 2.25rem 0;
+}
+
+.section-nab-commission p {
+    font-size: 18px;
+    line-height: 1.75;
+    margin-bottom: 1.25rem;
+    max-width: var(--editorial-max);
+}
+
+.section-nab-commission p:last-child {
+    margin-bottom: 0;
+}
+
+/* A Different Model section */
+.section-nab-model {
+    background-color: var(--color-white);
+}
+
+.section-nab-model h2 {
+    margin-bottom: 1.5rem;
+}
+
+.section-nab-model p {
+    font-size: 18px;
+    line-height: 1.75;
+    margin-bottom: 1.25rem;
+    max-width: var(--editorial-max);
+}
+
+.section-nab-model p:last-child {
+    margin-bottom: 0;
+}
+
+/* Responsive — collapse contrast panel on tablet */
+@media (max-width: 900px) {
+    .nab-intro-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .contrast-panel {
+        padding-top: 0;
+        border-top: 2px solid var(--color-navy);
+        padding-top: 32px;
+    }
+}
+.section-who {
+    background-color: var(--color-white);
+}
+.who-grid {
+    display: grid;
+    grid-template-columns: 1.25fr 1fr;
+    gap: clamp(40px, 6vw, 80px);
+    align-items: start;
+}
+
+.who-portrait img {
+    width: 80%;
+    border-radius: 50%;
+    object-fit: cover;
+    object-position: top center;
+}
+
+.who-bio h2 {
+    margin-bottom: 1.25rem;
+}
+
+
+/* ----------------------------------------------------------------
+   11. HOW I WORK
+   ---------------------------------------------------------------- */
+.section-how h2 {
+    margin-bottom: 1rem;
+}
+
+.section-intro {
+    font-size: 18px;
+    color: var(--color-secondary);
+    max-width: var(--editorial-max);
+    margin-bottom: 3rem;
+    line-height: 1.65;
+}
+
+.how-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 28px;
+    margin-bottom: 2rem;
+}
+
+.how-card {
+    padding: 32px 28px;
+    background-color: var(--color-white);
+    border: 1px solid var(--color-rule);
+    border-radius: 4px;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.how-card:hover {
+    border-color: var(--color-amber);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
+}
+
+.how-card h3 {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    color: var(--color-navy);
+    margin-bottom: 0.75rem;
+}
+
+.how-card p {
+    font-size: 16px;
+    color: var(--color-secondary);
+    line-height: 1.6;
+    margin-bottom: 0;
+}
+
+.how-card-link {
+    font-size: 14px;
+    margin-top: 1.25rem;
+}
+
+.how-note {
+    font-size: 16px;
+    color: var(--color-secondary);
+    max-width: var(--editorial-max);
+    margin-bottom: 1.5rem;
+    line-height: 1.65;
+}
+
+
+/* ----------------------------------------------------------------
+   12. TESTIMONIALS (scaffolded — hidden until populated)
+   ---------------------------------------------------------------- */
+.testimonials-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 28px;
+}
+
+.testimonial-item {
+    padding: 28px;
+    background-color: var(--color-white);
+    border: 1px solid var(--color-rule);
+    border-radius: 4px;
+}
+
+.testimonial-text {
+    font-size: 17px;
+    line-height: 1.6;
+    color: var(--color-text);
+    margin-bottom: 1.25rem;
+    font-style: italic;
+}
+
+.testimonial-attribution {
+    font-size: 14px;
+    color: var(--color-secondary);
+    font-style: normal;
+}
+
+
+/* ----------------------------------------------------------------
+   13. CTA SECTION
+   ---------------------------------------------------------------- */
+.section-cta {
+    background-color: #EDE8E0;
+    padding: clamp(80px, 8vw, 120px) 0;
+}
+
+.cta-inner {
+    max-width: 680px;
+}
+
+.cta-inner h2 {
+    margin-bottom: 1rem;
+}
+
+.cta-inner p {
+    font-size: 18px;
+    color: var(--color-secondary);
+    margin-bottom: 2.5rem;
+    line-height: 1.65;
+}
+
+
+/* ----------------------------------------------------------------
+   14. FOOTER
+   ---------------------------------------------------------------- */
+.footer {
+    background-color: var(--color-navy);
+    padding: 48px 0;
+}
+
+.footer-inner {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+}
+
+.footer-top {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 32px;
+}
+
+.footer-brand {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.footer-logo {
+    font-family: var(--font-serif);
+    font-size: 17px;
+    font-weight: 700;
+    color: var(--color-bg);
+    letter-spacing: -0.01em;
+}
+
+.footer-tagline {
+    font-size: 14px;
+    color: rgba(247, 244, 239, 0.5);
+}
+
+.footer-nav {
+    display: flex;
+    gap: 28px;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.footer-nav a {
+    font-size: 14px;
+    font-weight: 500;
+    color: rgba(247, 244, 239, 0.7);
+    transition: color 0.2s ease;
+}
+
+.footer-nav a:hover {
+    color: var(--color-white);
+}
+
+.footer-legal {
+    font-size: 12px;
+    color: rgba(247, 244, 239, 0.38);
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+    padding-top: 24px;
+    margin-bottom: 0;
+    line-height: 1.5;
+}
+
+
+/* ----------------------------------------------------------------
+   15. CONTACT FORM MODAL
+   ---------------------------------------------------------------- */
+.contact-modal {
+    position: fixed;
+    inset: 0;
+    z-index: 500;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+}
+
+.contact-modal[hidden] {
+    display: none;
+}
+
+.contact-modal-overlay {
+    position: absolute;
+    inset: 0;
+    background-color: rgba(28, 43, 58, 0.75);
+    backdrop-filter: blur(3px);
+}
+
+.contact-modal-box {
+    position: relative;
+    z-index: 1;
+    background: var(--color-white);
+    border-radius: 6px;
+    width: 100%;
+    max-width: 660px;
+    max-height: 90vh;
+    overflow-y: auto;
+    box-shadow: 0 24px 60px rgba(0, 0, 0, 0.25);
+}
+
+.contact-modal-box iframe {
+    display: block;
+    width: 100%;
+    height: 580px;
+    border: none;
+}
+
+.contact-modal-close {
+    position: absolute;
+    top: 12px;
+    right: 14px;
+    z-index: 2;
+    background: none;
+    border: none;
+    font-size: 18px;
+    line-height: 1;
+    color: var(--color-secondary);
+    cursor: pointer;
+    padding: 4px 8px;
+    transition: color 0.2s ease;
+}
+
+.contact-modal-close:hover {
+    color: var(--color-text);
+}
+
+
+/* ----------------------------------------------------------------
+   16. STICKY DISCOVERY CALL BAR
+   ---------------------------------------------------------------- */
+.sticky-bar {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 200;
+    background-color: var(--color-navy);
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 14px 0;
+    transform: translateY(100%);
+    transition: transform 0.3s ease;
+}
+
+.sticky-bar.visible {
+    transform: translateY(0);
+}
+
+.sticky-bar-inner {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    justify-content: flex-start;
+}
+
+.sticky-bar-text {
+    font-size: 15px;
+    color: rgba(247, 244, 239, 0.85);
+}
+
+.sticky-bar-close {
+    background: none;
+    border: none;
+    color: rgba(247, 244, 239, 0.45);
+    font-size: 18px;
+    line-height: 1;
+    cursor: pointer;
+    padding: 4px 8px;
+    margin-left: 8px;
+    transition: color 0.2s ease;
+}
+
+.sticky-bar-close:hover {
+    color: var(--color-white);
+}
+
+
+/* ----------------------------------------------------------------
+   16. SCROLL REVEAL ANIMATIONS
+   ---------------------------------------------------------------- */
+.reveal-section {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.4s ease-out, transform 0.4s ease-out;
+}
+
+.reveal-section.revealed {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+
+/* ----------------------------------------------------------------
+   19. HOW I WORK PAGE
+   ---------------------------------------------------------------- */
+
+.section-hiw-intro {
+    background-color: var(--color-white);
+    padding: clamp(48px, 5vw, 64px) 0;
+}
+
+.section-hiw-intro p {
+    font-size: 18px;
+    line-height: 1.75;
+    margin-bottom: 0;
+}
+
+.section-hiw-engagements,
+.section-hiw-flex {
+    background-color: var(--color-bg);
+    padding: clamp(56px, 6vw, 80px) 0;
+}
+
+.section-hiw-pricing {
+    background-color: var(--color-white);
+    padding: clamp(56px, 6vw, 80px) 0;
+}
+
+/* Accordion container */
+.accordion {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-top: 2.5rem;
+}
+
+/* Individual accordion card */
+.accordion-item {
+    background-color: var(--color-white);
+    border: 1px solid var(--color-rule);
+    border-radius: 4px;
+    overflow: hidden;
+    transition: border-color 0.2s ease;
+}
+
+.accordion-item:hover,
+.accordion-item.is-open {
+    border-color: var(--color-amber);
+}
+
+/* Trigger button */
+.accordion-trigger {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 20px;
+    width: 100%;
+    padding: 28px 28px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    text-align: left;
+    color: inherit;
+    transition: background-color 0.15s ease;
+}
+
+.accordion-trigger:hover {
+    background-color: rgba(193, 122, 38, 0.03);
+}
+
+.accordion-trigger-left {
+    flex: 1;
+    min-width: 0;
+}
+
+/* Icon + title row */
+.accordion-heading {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 6px;
+}
+
+.accordion-title {
+    font-family: var(--font-serif);
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--color-navy);
+    margin: 0;
+    line-height: 1.2;
+}
+
+/* One-sentence descriptor, visible in collapsed state */
+.accordion-descriptor {
+    font-size: 16px;
+    color: var(--color-secondary);
+    margin: 0;
+    padding-left: 32px; /* 22px icon + 10px gap */
+    line-height: 1.5;
+}
+
+/* Chevron — rotates when card is open */
+.accordion-chevron {
+    flex-shrink: 0;
+    color: var(--color-amber);
+    transition: transform 0.35s ease;
+    margin-top: 4px;
+}
+
+.accordion-item.is-open .accordion-chevron {
+    transform: rotate(180deg);
+}
+
+/* Smooth height animation via CSS grid — no bouncing */
+.accordion-body-wrap {
+    display: grid;
+    grid-template-rows: 0fr;
+    transition: grid-template-rows 0.35s ease;
+}
+
+.accordion-item.is-open .accordion-body-wrap {
+    grid-template-rows: 1fr;
+}
+
+.accordion-body-inner {
+    overflow: hidden;
+}
+
+/* Body paragraph — left-aligned with title text */
+.accordion-body-text {
+    padding: 0 28px 28px 60px; /* left = 28px trigger + 22px icon + 10px gap */
+    font-size: 17px;
+    line-height: 1.75;
+    color: var(--color-text);
+    margin: 0;
+}
+
+/* Pricing stack */
+.pricing-stack {
+    margin-top: 2.5rem;
+    max-width: var(--editorial-max);
+}
+
+.pricing-item {
+    padding-bottom: 2rem;
+    border-bottom: 1px solid var(--color-rule);
+    margin-bottom: 2rem;
+}
+
+.pricing-item:last-child {
+    border-bottom: none;
+    padding-bottom: 0;
+    margin-bottom: 0;
+}
+
+.pricing-item h3 {
+    font-size: 22px;
+    color: var(--color-navy);
+    margin-bottom: 0.75rem;
+}
+
+.pricing-item p {
+    font-size: 17px;
+    line-height: 1.75;
+    color: var(--color-text);
+    margin-bottom: 0.75rem;
+}
+
+.pricing-item p:last-child {
+    margin-bottom: 0;
+}
+
+
+/* ----------------------------------------------------------------
+   17. RESPONSIVE — TABLET  (≤ 900px)
+   ---------------------------------------------------------------- */
+@media (max-width: 900px) {
+    .stats-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 24px;
+    }
+
+    .who-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .who-portrait {
+        max-width: 400px;
+    }
+
+    .how-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .editorial {
+        max-width: 100%;
+    }
+
+    .testimonials-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+
+/* ----------------------------------------------------------------
+   18. RESPONSIVE — MOBILE  (≤ 640px)
+   ---------------------------------------------------------------- */
+@media (max-width: 640px) {
+    :root {
+        --section-gap: 64px;
+    }
+
+    /* Mobile nav */
+    .nav-toggle {
+        display: flex;
+    }
+
+    .nav-links {
+        display: none;
+        position: absolute;
+        top: var(--nav-height);
+        left: 0;
+        right: 0;
+        background-color: var(--color-navy);
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 24px clamp(24px, 5vw, 80px);
+        gap: 20px;
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+        z-index: 99;
+    }
+
+    .nav-links.nav-open {
+        display: flex;
+    }
+
+    .nav-links li a:not(.btn) {
+        font-size: 16px;
+    }
+
+    /* Stats */
+    .stats-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 20px;
+    }
+
+    /* Who I Help cards */
+    .who-help-cards {
+        grid-template-columns: 1fr;
+    }
+
+    /* Situations */
+    .situations-list {
+        grid-template-columns: 1fr;
+    }
+
+    /* Footer */
+    .footer-top {
+        flex-direction: column;
+        gap: 24px;
+    }
+
+    /* Sticky bar */
+    .sticky-bar-inner {
+        flex-wrap: wrap;
+        gap: 12px;
+    }
+
+    .sticky-bar-text {
+        flex: 1 1 100%;
+    }
+
+    .sticky-bar-close {
+        margin-left: 0;
+    }
+
+    /* Accordion mobile */
+    .accordion-trigger {
+        padding: 22px 20px;
+    }
+
+    .accordion-body-text {
+        padding: 0 20px 24px 20px;
+    }
+
+    .accordion-descriptor {
+        padding-left: 0;
+        margin-top: 4px;
+    }
+}
